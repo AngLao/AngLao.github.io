@@ -12,7 +12,7 @@ SVG = {
 
 def header(current="index", prefix=""):
     pages={"index":"首页","archive":"归档","about":"关于"}
-    nav="".join(f'<a href="{"" if k=="index" else k+".html"}" class="nav-item{" active" if k==current else ""}">{v}</a>' for k,v in pages.items())
+    nav="".join(f'<a href="{prefix}{"" if k=="index" else k+".html"}" class="nav-item{" active" if k==current else ""}">{v}</a>' for k,v in pages.items())
     return f'<header class="site-header"><div class="header-inner"><a href="{prefix}index.html" class="logo"><span class="logo-icon">{SVG["newspaper"]}</span><span class="logo-text">全球新闻日报</span></a><nav class="main-nav">{nav}</nav></div></header>'
 
 def footer(prefix=""):
@@ -173,7 +173,5 @@ def load_meta(data_dir):
 
 if __name__=="__main__":
     build()
-    repo_root=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    daily=gen_index(items, date_str, prefix="../")
 
 
