@@ -35,6 +35,13 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+
+      - name: Python Debug
+        run: |
+          python --version
+          python -c "import sys; print(sys.path)"
+          python -c "import src.build_site; print('IMPORT OK')"
+          ls -la src/
       - name: 抓取新闻并构建站点
         run: |
           python -m src.build_site
@@ -62,3 +69,4 @@ jobs:
       - name: 部署
         id: deployment
         uses: actions/deploy-pages@v4
+
