@@ -1,4 +1,4 @@
-﻿import asyncio, hashlib
+import asyncio, hashlib
 from datetime import datetime, timezone
 import aiohttp, feedparser
 from bs4 import BeautifulSoup

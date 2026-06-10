@@ -1,4 +1,4 @@
-﻿NEWS_SOURCES = [
+NEWS_SOURCES = [
     {"name":"Reuters","name_cn":"路透社","region":"Global","rss":"","url":"https://www.reuters.com","lang":"en","focus":["World","Economy"]},
     {"name":"Associated Press","name_cn":"美联社","region":"Global","rss":"","url":"https://apnews.com","lang":"en","focus":["World","Politics"]},
     {"name":"BBC News","name_cn":"BBC新闻","region":"Global","rss":"https://feeds.bbci.co.uk/news/world/rss.xml","url":"https://www.bbc.com/news","lang":"en","focus":["World","Politics","Technology","Science"]},

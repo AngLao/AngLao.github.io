@@ -1,4 +1,4 @@
-﻿import os, json
+import os, json
 from datetime import datetime, timezone
 from .news_sources import NEWS_SOURCES, CATEGORIES, CATEGORY_ORDER, CATEGORY_KEYWORDS
 from .news_fetcher import run as fetch_news, NewsItem
