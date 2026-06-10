@@ -1,0 +1,70 @@
+﻿*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f8fafc;--bg-card:#fff;--border:#e2e8f0;--text:#0f172a;--text-muted:#64748b;--header-bg:#0f172a;--header-text:#f1f5f9;--accent:#0891b2;--radius:8px;--max-w:1200px;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:var(--font-sans);color:var(--text);background:var(--bg);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--accent);text-decoration:none;transition:color .15s}
+a:hover{color:#065f73;text-decoration:underline}
+
+.site-header{background:var(--header-bg);color:var(--header-text);position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.header-inner{max-width:var(--max-w);margin:0 auto;padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:8px;color:var(--header-text);font-size:1.1rem;font-weight:600}
+.logo:hover{color:var(--header-text);text-decoration:none}
+.main-nav{display:flex;gap:4px}
+.nav-item{padding:8px 16px;border-radius:6px;color:#94a3b8;font-size:.9rem;transition:all .15s}
+.nav-item:hover{color:#fff;background:rgba(255,255,255,.08);text-decoration:none}
+.nav-item.active{color:#fff;background:rgba(255,255,255,.12);font-weight:500}
+
+.main-content{max-width:var(--max-w);margin:0 auto;padding:32px 20px 60px;width:100%;flex:1}
+
+.hero{text-align:center;padding:48px 20px 36px}
+.hero-icon{display:flex;justify-content:center;margin-bottom:8px}
+.hero h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+.hero p{color:var(--text-muted);font-size:1rem;max-width:600px;margin:0 auto 4px}
+
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin:32px 0}
+.feature-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:box-shadow .15s}
+.feature-card:hover{box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.feature-card .icon{font-size:1.8rem;margin-bottom:8px}
+.feature-card h3{font-size:1rem;font-weight:600;margin-bottom:6px}
+.feature-card p{font-size:.85rem;color:var(--text-muted);line-height:1.5}
+
+.section-title{font-size:1.1rem;font-weight:600;margin:32px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--border)}
+
+.source-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin:16px 0}
+.source-tag{padding:6px 14px;background:var(--bg-card);border:1px solid var(--border);border-radius:6px;font-size:.82rem;text-align:center;color:var(--text);transition:all .15s}
+.source-tag:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+
+.cta-section{text-align:center;margin:40px 0}
+.cta-btn{display:inline-block;padding:12px 32px;background:var(--accent);color:#fff;border-radius:8px;font-size:.95rem;font-weight:500;transition:background .15s}
+.cta-btn:hover{background:#065f73;color:#fff;text-decoration:none}
+.cta-btn.outline{background:transparent;border:1px solid var(--border);color:var(--text);margin-left:8px}
+.cta-btn.outline:hover{border-color:var(--accent);color:var(--accent)}
+
+.archive-page h1{font-size:1.4rem;font-weight:700;margin-bottom:4px}
+.archive-count{color:var(--text-muted);font-size:.9rem;margin-bottom:24px}
+.archive-month{margin-bottom:24px}
+.archive-month h2{font-size:1rem;font-weight:600;color:var(--text-muted);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+
+.about-page{max-width:800px}
+.about-page h1{font-size:1.4rem;font-weight:700;margin-bottom:20px}
+.about-content h2{font-size:1.1rem;font-weight:600;margin:24px 0 12px}
+.about-content ul{padding-left:20px}
+.about-content li{margin-bottom:4px;font-size:.9rem}
+.source-list{columns:2;column-gap:24px}
+
+.site-footer{background:var(--header-bg);color:#94a3b8;font-size:.82rem;padding:32px 20px;margin-top:auto}
+.footer-inner{max-width:var(--max-w);margin:0 auto;text-align:center}
+.footer-links{margin:8px 0}
+.footer-links a{color:#94a3b8}
+.footer-links a:hover{color:#fff}
+.footer-legal{font-size:.75rem;color:#64748b}
+
+@media(max-width:768px){
+.header-inner{height:50px}
+.hero{padding:32px 16px 24px}
+.hero h1{font-size:1.5rem}
+.feature-grid{grid-template-columns:1fr}
+.source-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+.source-list{columns:1}
+.main-content{padding:20px 12px 40px}
+}
