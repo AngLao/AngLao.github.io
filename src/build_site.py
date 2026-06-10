@@ -10,15 +10,15 @@ SVG = {
     "calendar": '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
 }
 
-def header(current="index"):
+def header(current="index", prefix=""):
     pages={"index":"首页","archive":"归档","about":"关于"}
     nav="".join(f'<a href="{"" if k=="index" else k+".html"}" class="nav-item{" active" if k==current else ""}">{v}</a>' for k,v in pages.items())
-    return f'<header class="site-header"><div class="header-inner"><a href="index.html" class="logo"><span class="logo-icon">{SVG["newspaper"]}</span><span class="logo-text">全球新闻日报</span></a><nav class="main-nav">{nav}</nav></div></header>'
+    return f'<header class="site-header"><div class="header-inner"><a href="{prefix}index.html" class="logo"><span class="logo-icon">{SVG["newspaper"]}</span><span class="logo-text">全球新闻日报</span></a><nav class="main-nav">{nav}</nav></div></header>'
 
-def footer():
-    return f'<footer class="site-footer"><div class="footer-inner"><p>全球新闻日报 - 每日自动聚合自50+家国际主流媒体</p><p class="footer-links"><a href="archive.html">全部归档</a> - <a href="rss.xml">RSS订阅</a> - <a href="about.html">关于</a></p><p class="footer-legal">新闻内容版权归原始来源所有 - 自动生成于 {datetime.now(timezone.utc).strftime("%Y-%m-%d")}</p></div></footer>'
+def footer(prefix=""):
+    return f'<footer class="site-footer"><div class="footer-inner"><p>全球新闻日报 - 每日自动聚合自50+家国际主流媒体</p><p class="footer-links"><a href="{prefix}archive.html">全部归档</a> - <a href="{prefix}rss.xml">RSS订阅</a> - <a href="{prefix}about.html">关于</a></p><p class="footer-legal">新闻内容版权归原始来源所有 - 自动生成于 {datetime.now(timezone.utc).strftime("%Y-%m-%d")}</p></div></footer>'
 
-def page(title, body, current="index", extra=""):
+def page(title, body, current="index", extra="", prefix=""):
     return f'''<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -26,17 +26,17 @@ def page(title, body, current="index", extra=""):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title} - 全球新闻日报</title>
 <meta name="description" content="每日全球新闻聚合 - 来自50+国际主流媒体的精选新闻">
-<link rel="stylesheet" href="css/style.css">
-<link rel="alternate" type="application/rss+xml" title="全球新闻日报" href="rss.xml">
+<link rel="stylesheet" href="{prefix}css/style.css">
+<link rel="alternate" type="application/rss+xml" title="全球新闻日报" href="{prefix}rss.xml">
 {extra}
 </head>
 <body>
-{header(current)}
+{header(current, prefix)}
 <main class="main-content">
 {body}
 </main>
-{footer()}
-<script src="js/main.js"></script>
+{footer(prefix)}
+<script src="{prefix}js/main.js"></script>
 </body>
 </html>'''
 
@@ -62,7 +62,7 @@ def cat_section(cat, items):
 <div class="news-grid">{cards}</div>
 </section>'''
 
-def gen_index(items, date_str):
+def gen_index(items, date_str, prefix=""):
     top=items[:5]
     top_cards="\n".join(news_card(i,True) for i in top)
     grouped={cat:[] for cat in CATEGORY_ORDER}
@@ -75,7 +75,7 @@ def gen_index(items, date_str):
 <h1>全球新闻日报</h1><p>{date_str}</p><p style="font-size:.85rem;color:#94a3b8">{stats}</p></section>
 <section class="top-stories"><h2 class="section-title">\u2605 今日要闻</h2><div class="top-grid">{top_cards}</div></section>
 {cat_html}'''
-    return page(date_str, body)
+    return page(date_str, body, prefix=prefix)
 
 def gen_about():
     srcs="\n".join(f'<li><strong>{s["name"]}</strong> ({s.get("name_cn","")}) - {s.get("region","")}</li>' for s in NEWS_SOURCES)
@@ -109,7 +109,6 @@ def save_json(items, path):
 
 def build():
     # 获取输出目录（脚本在 daily-news/src/build_site.py，站点在 repo 根目录）
-    repo_root=os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     output_dir=repo_root  # 直接在仓库根目录输出
     daily_dir=os.path.join(output_dir,"daily")
     data_dir=os.path.join(repo_root,"data")
@@ -146,7 +145,6 @@ def build():
         json.dump(sorted(set(arch_data)),f,ensure_ascii=False)
 
     # 日报页
-    daily=gen_archive(items_by_day)
     with open(os.path.join(daily_dir,f"{date_str}.html"),"w",encoding="utf-8") as f:
         f.write(daily)
 
@@ -175,3 +173,7 @@ def load_meta(data_dir):
 
 if __name__=="__main__":
     build()
+    repo_root=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    daily=gen_index(items, date_str, prefix="../")
+
+
