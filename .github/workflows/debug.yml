@@ -1,5 +1,10 @@
 ﻿name: Python Debug
-on: workflow_dispatch
+on:
+  push:
+    paths:
+      - '.github/workflows/debug.yml'
+      - 'src/**'
+  workflow_dispatch:
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -8,21 +13,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Test Python
-        run: |
-          python --version
-          python -c "import sys; print(sys.version)"
-          python -c "import os; print(os.getcwd())"
-          python -c "
-import sys
-sys.path.insert(0, '.')
-from src import build_site
-print('SRC IMPORT OK')
-print(build_site.SVG.keys())
-"
-          pip install feedparser aiohttp beautifulsoup4
-          python -c "
-import feedparser, aiohttp, bs4
-print('DEPS OK')
-"
-          python -c "from src.build_site import build; build()" 2>&1 || true
+      - name: Install deps
+        run: pip install -r requirements.txt
+      - name: Test import
+        run: python -c "from src.build_site import build; print('IMPORT OK')"
+      - name: Run build
+        run: python -m src.build_site
