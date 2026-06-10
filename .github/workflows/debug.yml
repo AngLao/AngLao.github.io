@@ -1,0 +1,28 @@
+﻿name: Python Debug
+on: workflow_dispatch
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Test Python
+        run: |
+          python --version
+          python -c "import sys; print(sys.version)"
+          python -c "import os; print(os.getcwd())"
+          python -c "
+import sys
+sys.path.insert(0, '.')
+from src import build_site
+print('SRC IMPORT OK')
+print(build_site.SVG.keys())
+"
+          pip install feedparser aiohttp beautifulsoup4
+          python -c "
+import feedparser, aiohttp, bs4
+print('DEPS OK')
+"
+          python -c "from src.build_site import build; build()" 2>&1 || true
