@@ -90,7 +90,11 @@ def gen_archive(items_by_day):
     months={}
     for d in sorted(items_by_day.keys(),reverse=True):
         months.setdefault(d[:7],[]).append(d)
-    blocks="".join(f'<section class="archive-month"><h2>{ym}</h2><div class="archive-days">{"".join(f'<a href="{d}.html" class="archive-day">{d}</a>' for d in days)}</div></section>' for ym,days in sorted(months.items(),reverse=True))
+    month_sections = []
+    for ym, days in sorted(months.items(), reverse=True):
+        day_links = "".join(f"<a href='{d}.html' class='archive-day'>{d}</a>" for d in days)
+        month_sections.append(f'<section class="archive-month"><h2>{ym}</h2><div class="archive-days">{day_links}</div></section>')
+    blocks = "".join(month_sections)
     body=f'''<section class="archive-page"><h1>新闻归档</h1><p class="archive-count">共 {len(items_by_day)} 期日报</p>{blocks}</section>'''
     return page("新闻归档",body,"archive",'<meta name="robots" content="all">')
 
