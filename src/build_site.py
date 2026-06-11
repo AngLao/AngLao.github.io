@@ -11,12 +11,12 @@ SVG = {
 }
 
 def header(current="index", prefix=""):
-    pages={"index":"首页","archive":"归档","about":"关于"}
+    pages={"index":"棣栭〉","archive":"褰掓。","about":"鍏充簬"}
     nav="".join(f'<a href="{prefix}{"" if k=="index" else k+".html"}" class="nav-item{" active" if k==current else ""}">{v}</a>' for k,v in pages.items())
-    return f'<header class="site-header"><div class="header-inner"><a href="{prefix}index.html" class="logo"><span class="logo-icon">{SVG["newspaper"]}</span><span class="logo-text">全球新闻日报</span></a><nav class="main-nav">{nav}</nav></div></header>'
+    return f'<header class="site-header"><div class="header-inner"><a href="{prefix}index.html" class="logo"><span class="logo-icon">{SVG["newspaper"]}</span><span class="logo-text">鍏ㄧ悆鏂伴椈鏃ユ姤</span></a><nav class="main-nav">{nav}</nav></div></header>'
 
 def footer(prefix=""):
-    return f'<footer class="site-footer"><div class="footer-inner"><p>全球新闻日报 - 每日自动聚合自50+家国际主流媒体</p><p class="footer-links"><a href="{prefix}archive.html">全部归档</a> - <a href="{prefix}rss.xml">RSS订阅</a> - <a href="{prefix}about.html">关于</a></p><p class="footer-legal">新闻内容版权归原始来源所有 - 自动生成于 {datetime.now(timezone.utc).strftime("%Y-%m-%d")}</p></div></footer>'
+    return f'<footer class="site-footer"><div class="footer-inner"><p>鍏ㄧ悆鏂伴椈鏃ユ姤 - 姣忔棩鑷姩鑱氬悎鑷?0+瀹跺浗闄呬富娴佸獟浣?/p><p class="footer-links"><a href="{prefix}archive.html">鍏ㄩ儴褰掓。</a> - <a href="{prefix}rss.xml">RSS璁㈤槄</a> - <a href="{prefix}about.html">鍏充簬</a></p><p class="footer-legal">鏂伴椈鍐呭鐗堟潈褰掑師濮嬫潵婧愭墍鏈?- 鑷姩鐢熸垚浜?{datetime.now(timezone.utc).strftime("%Y-%m-%d")}</p></div></footer>'
 
 def page(title, body, current="index", extra="", prefix=""):
     return f'''<!DOCTYPE html>
@@ -24,10 +24,10 @@ def page(title, body, current="index", extra="", prefix=""):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{title} - 全球新闻日报</title>
-<meta name="description" content="每日全球新闻聚合 - 来自50+国际主流媒体的精选新闻">
+<title>{title} - 鍏ㄧ悆鏂伴椈鏃ユ姤</title>
+<meta name="description" content="姣忔棩鍏ㄧ悆鏂伴椈鑱氬悎 - 鏉ヨ嚜50+鍥介檯涓绘祦濯掍綋鐨勭簿閫夋柊闂?>
 <link rel="stylesheet" href="{prefix}css/style.css">
-<link rel="alternate" type="application/rss+xml" title="全球新闻日报" href="{prefix}rss.xml">
+<link rel="alternate" type="application/rss+xml" title="鍏ㄧ悆鏂伴椈鏃ユ姤" href="{prefix}rss.xml">
 {extra}
 </head>
 <body>
@@ -70,21 +70,21 @@ def gen_index(items, date_str, prefix=""):
         cat=item.categories[0] if item.categories else "World"
         if cat in grouped: grouped[cat].append(item)
     cat_html="\n".join(cat_section(cat,grouped[cat]) for cat in CATEGORY_ORDER if grouped[cat])
-    stats=f"共 {len(items)} 条新闻 - 来自 {len(set(i.source_name for i in items))} 家媒体"
+    stats=f"鍏?{len(items)} 鏉℃柊闂?- 鏉ヨ嚜 {len(set(i.source_name for i in items))} 瀹跺獟浣?
     body=f'''<section class="hero"><div class="hero-icon">{SVG["globe"]}</div>
-<h1>全球新闻日报</h1><p>{date_str}</p><p style="font-size:.85rem;color:#94a3b8">{stats}</p></section>
-<section class="top-stories"><h2 class="section-title">\u2605 今日要闻</h2><div class="top-grid">{top_cards}</div></section>
+<h1>鍏ㄧ悆鏂伴椈鏃ユ姤</h1><p>{date_str}</p><p style="font-size:.85rem;color:#94a3b8">{stats}</p></section>
+<section class="top-stories"><h2 class="section-title">\u2605 浠婃棩瑕侀椈</h2><div class="top-grid">{top_cards}</div></section>
 {cat_html}'''
     return page(date_str, body, prefix=prefix)
 
 def gen_about():
     srcs="\n".join(f'<li><strong>{s["name"]}</strong> ({s.get("name_cn","")}) - {s.get("region","")}</li>' for s in NEWS_SOURCES)
-    body=f'''<section class="about-page"><h1>关于全球新闻日报</h1><div class="about-content">
-<p>本项目每日自动聚合来自全球50+家主流媒体的新闻头条，涵盖政治、经济、科技、环境、体育等多个领域。</p>
-<p>由 Python 脚本抓取 RSS feed，通过 GitHub Actions 每日自动运行，构建静态网站并托管于 GitHub Pages。</p>
-<h2>技术栈</h2><ul><li>Python: feedparser, aiohttp, BeautifulSoup4</li><li>GitHub Actions - UTC 00:00 每日运行</li><li>GitHub Pages 静态托管</li><li>纯前端 HTML + CSS + JS，零依赖</li></ul>
-<h2>数据来源（{len(NEWS_SOURCES)}家媒体）</h2><ul class="source-list">{srcs}</ul></div></section>'''
-    return page("关于",body,"about",'<meta name="robots" content="all">')
+    body=f'''<section class="about-page"><h1>鍏充簬鍏ㄧ悆鏂伴椈鏃ユ姤</h1><div class="about-content">
+<p>鏈」鐩瘡鏃ヨ嚜鍔ㄨ仛鍚堟潵鑷叏鐞?0+瀹朵富娴佸獟浣撶殑鏂伴椈澶存潯锛屾兜鐩栨斂娌汇€佺粡娴庛€佺鎶€銆佺幆澧冦€佷綋鑲茬瓑澶氫釜棰嗗煙銆?/p>
+<p>鐢?Python 鑴氭湰鎶撳彇 RSS feed锛岄€氳繃 GitHub Actions 姣忔棩鑷姩杩愯锛屾瀯寤洪潤鎬佺綉绔欏苟鎵樼浜?GitHub Pages銆?/p>
+<h2>鎶€鏈爤</h2><ul><li>Python: feedparser, aiohttp, BeautifulSoup4</li><li>GitHub Actions - UTC 00:00 姣忔棩杩愯</li><li>GitHub Pages 闈欐€佹墭绠?/li><li>绾墠绔?HTML + CSS + JS锛岄浂渚濊禆</li></ul>
+<h2>鏁版嵁鏉ユ簮锛坽len(NEWS_SOURCES)}瀹跺獟浣擄級</h2><ul class="source-list">{srcs}</ul></div></section>'''
+    return page("鍏充簬",body,"about",'<meta name="robots" content="all">')
 
 def gen_archive(items_by_day):
     months={}
@@ -95,8 +95,8 @@ def gen_archive(items_by_day):
         day_links = "".join(f"<a href='{d}.html' class='archive-day'>{d}</a>" for d in days)
         month_sections.append(f'<section class="archive-month"><h2>{ym}</h2><div class="archive-days">{day_links}</div></section>')
     blocks = "".join(month_sections)
-    body=f'''<section class="archive-page"><h1>新闻归档</h1><p class="archive-count">共 {len(items_by_day)} 期日报</p>{blocks}</section>'''
-    return page("新闻归档",body,"archive",'<meta name="robots" content="all">')
+    body=f'''<section class="archive-page"><h1>鏂伴椈褰掓。</h1><p class="archive-count">鍏?{len(items_by_day)} 鏈熸棩鎶?/p>{blocks}</section>'''
+    return page("鏂伴椈褰掓。",body,"archive",'<meta name="robots" content="all">')
 
 def gen_rss(items_by_day):
     latest=sorted(items_by_day.keys(),reverse=True)[0] if items_by_day else ""
@@ -104,7 +104,7 @@ def gen_rss(items_by_day):
     xml_items="".join(f'<item><title><![CDATA[{item.title}]]></title><link>{item.url}</link><source>{item.source_name}</source><guid>{item.url}</guid></item>' for item in today[:30])
     return f'''<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-<channel><title>全球新闻日报</title><link>https://AngLao.github.io/</link><description>每日全球新闻聚合</description><language>zh-CN</language>
+<channel><title>鍏ㄧ悆鏂伴椈鏃ユ姤</title><link>https://AngLao.github.io/</link><description>姣忔棩鍏ㄧ悆鏂伴椈鑱氬悎</description><language>zh-CN</language>
 <atom:link href="https://AngLao.github.io/rss.xml" rel="self" type="application/rss+xml"/>{xml_items}</channel></rss>'''
 
 def save_json(items, path):
@@ -112,8 +112,8 @@ def save_json(items, path):
     with open(path,"w",encoding="utf-8") as f: json.dump(data,f,ensure_ascii=False,indent=2)
 
 def build():
-    # 获取输出目录（脚本在 daily-news/src/build_site.py，站点在 repo 根目录）
-    output_dir=repo_root  # 直接在仓库根目录输出
+    repo_root=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    output_dir=repo_root  # 鐩存帴鍦ㄤ粨搴撴牴鐩綍杈撳嚭
     daily_dir=os.path.join(output_dir,"daily")
     data_dir=os.path.join(repo_root,"data")
     for d in [output_dir,daily_dir,data_dir]:
@@ -121,21 +121,21 @@ def build():
 
     date_str=datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
-    # 抓取新闻
-    print(f"[*] 抓取新闻中...")
+    # 鎶撳彇鏂伴椈
+    print(f"[*] 鎶撳彇鏂伴椈涓?..")
     items=fetch_news()
-    print(f"[+] 获取到 {len(items)} 条新闻")
+    print(f"[+] 鑾峰彇鍒?{len(items)} 鏉℃柊闂?)
 
-    # 保存 JSON 数据
+    # 淇濆瓨 JSON 鏁版嵁
     save_json(items,os.path.join(data_dir,f"{date_str}.json"))
 
-    # 生成索引页面
+    # 鐢熸垚绱㈠紩椤甸潰
     idx=gen_index(items,date_str)
     with open(os.path.join(output_dir,"index.html"),"w",encoding="utf-8") as f:
         f.write(idx)
-    print(f"[OK] index.html - {len(items)} 条新闻")
+    print(f"[OK] index.html - {len(items)} 鏉℃柊闂?)
 
-    # 生成今日详情页
+    # 鐢熸垚浠婃棩璇︽儏椤?
     items_by_day={date_str:items}
     arch_data=load_meta(data_dir)
     for d in arch_data:
@@ -148,16 +148,16 @@ def build():
     with open(os.path.join(data_dir,"meta.json"),"w",encoding="utf-8") as f:
         json.dump(sorted(set(arch_data)),f,ensure_ascii=False)
 
-    # 日报页
+    # 鏃ユ姤椤?
     with open(os.path.join(daily_dir,f"{date_str}.html"),"w",encoding="utf-8") as f:
         f.write(daily)
 
-    # 归档页
+    # 褰掓。椤?
     arch=gen_archive(items_by_day)
     with open(os.path.join(output_dir,"archive.html"),"w",encoding="utf-8") as f:
         f.write(arch)
 
-    # 关于页
+    # 鍏充簬椤?
     about=gen_about()
     with open(os.path.join(output_dir,"about.html"),"w",encoding="utf-8") as f:
         f.write(about)
@@ -167,7 +167,7 @@ def build():
     with open(os.path.join(output_dir,"rss.xml"),"w",encoding="utf-8") as f:
         f.write(rss)
 
-    print(f"[DONE] 站点构建完成 - {date_str}")
+    print(f"[DONE] 绔欑偣鏋勫缓瀹屾垚 - {date_str}")
 
 def load_meta(data_dir):
     p=os.path.join(data_dir,"meta.json")
@@ -181,4 +181,3 @@ if __name__=="__main__":
 
 
 # trigger rebuild
-
