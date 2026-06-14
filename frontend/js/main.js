@@ -144,8 +144,33 @@
     });
   }
 
+  // ── render daily detail ─────────────────────────────
+  function renderDaily(data) {
+    var stats = $('#daily-stats');
+    if (stats) stats.textContent =
+      '共 ' + data.stats.total + ' 条新闻 · 来自 ' + data.stats.sources + ' 家媒体';
+
+    var grid = $('#daily-grid');
+    if (grid) data.items.forEach(function(item) {
+      grid.appendChild(newsCard(item, false));
+    });
+  }
+
   // ── init ─────────────────────────────────────────────
   function init() {
+    // 日报详情页（通过 DAILY_DATE 全局变量检测）
+    if (typeof DAILY_DATE !== 'undefined' && DAILY_DATE) {
+      fetch('../data/daily/' + DAILY_DATE + '.json')
+        .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(renderDaily)
+        .catch(function(e) {
+          var el = $('#daily-grid');
+          if (el) el.innerHTML = '<p class="error">⚠ 数据加载失败</p>';
+          console.error('daily json load error:', e);
+        });
+      return;
+    }
+
     if (pageName === 'index') {
       fetch('data/news.json')
         .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
