@@ -43,8 +43,15 @@
       else el.setAttribute(k, v);
     });
     children.forEach(c => {
-      if (typeof c === 'string') el.appendChild(document.createTextNode(c));
-      else if (c instanceof Node) el.appendChild(c);
+      if (typeof c === 'string') {
+        if (c.startsWith('<')) {
+          el.insertAdjacentHTML('beforeend', c);
+        } else {
+          el.appendChild(document.createTextNode(c));
+        }
+      } else if (c instanceof Node) {
+        el.appendChild(c);
+      }
     });
     return el;
   }
