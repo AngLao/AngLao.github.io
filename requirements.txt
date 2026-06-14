@@ -1,3 +1,5 @@
-﻿feedparser>=6.0
-aiohttp>=3.9
-beautifulsoup4>=4.12
+﻿# 当前版本使用 Python 标准库，零外部依赖
+# 后续添加新闻抓取功能时将需要：
+# feedparser>=6.0
+# aiohttp>=3.9
+# beautifulsoup4>=4.12

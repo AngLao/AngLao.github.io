@@ -1,1 +1,1 @@
-from .build_site import build; build()
+from .build import build; build()

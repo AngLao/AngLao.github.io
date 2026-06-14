@@ -1,2 +1,7 @@
 __pycache__/
 site/
+
+# Agent / 工具生成文件
+.reasonix/
+reasonix.toml
+.codegraph/
