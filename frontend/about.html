@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>关于 — 全球新闻日报</title>
+<meta name="description" content="关于全球新闻日报 — 每日自动聚合全球新闻">
+<meta name="robots" content="all">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Z"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/>
+      </svg>
+      <span class="logo-text">全球新闻日报</span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html">首页</a>
+      <a href="archive.html">归档</a>
+      <a href="about.html" class="active">关于</a>
+    </nav>
+  </div>
+</header>
+
+<main class="main-content">
+
+  <section class="about-page">
+    <h1>关于全球新闻日报</h1>
+    <div class="about-content">
+      <p>本项目每日自动聚合来自全球 50+ 家主流媒体的头条新闻，涵盖政治、经济、科技、环境、体育等多个领域。</p>
+      <p>由 GitHub Actions 每日自动运行，构建静态网站并托管于 GitHub Pages。</p>
+
+      <h2>技术栈</h2>
+      <ul>
+        <li>Python 标准库 — 数据处理与站点构建</li>
+        <li>GitHub Actions — UTC 00:00 每日运行</li>
+        <li>GitHub Pages — 静态网站托管</li>
+        <li>纯前端 HTML + CSS + JS，零框架依赖</li>
+      </ul>
+
+      <h2>新闻分类</h2>
+      <div class="cat-tags">
+        <span class="cat-badge" style="--cat-color:#0891b2">国际</span>
+        <span class="cat-badge" style="--cat-color:#dc2626">政治</span>
+        <span class="cat-badge" style="--cat-color:#059669">经济</span>
+        <span class="cat-badge" style="--cat-color:#2563eb">科技</span>
+        <span class="cat-badge" style="--cat-color:#7c3aed">科学</span>
+        <span class="cat-badge" style="--cat-color:#16a34a">环境</span>
+        <span class="cat-badge" style="--cat-color:#ea580c">体育</span>
+        <span class="cat-badge" style="--cat-color:#d946ef">文化</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p>全球新闻日报 — 每日自动聚合自全球50+家主流媒体</p>
+    <p class="footer-links">
+      <a href="archive.html">归档</a> · <a href="rss.xml">RSS</a> · <a href="about.html">关于</a>
+    </p>
+    <p class="footer-legal" id="footer-date">新闻内容版权归原始来源所有</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
