@@ -1,7 +1,8 @@
-import os, json
+import os, json, shutil
 from datetime import datetime, timezone
 from .news_sources import NEWS_SOURCES, CATEGORIES, CATEGORY_ORDER, CATEGORY_KEYWORDS
 from .news_fetcher import run as fetch_news, NewsItem
+from .markdown_brief import generate as gen_markdown
 
 # SVG icons inline
 SVG = {
@@ -92,7 +93,7 @@ def gen_archive(items_by_day):
         months.setdefault(d[:7],[]).append(d)
     month_sections = []
     for ym, days in sorted(months.items(), reverse=True):
-        day_links = "".join(f"<a href='{d}.html' class='archive-day'>{d}</a>" for d in days)
+        day_links = "".join(f"<a href='daily/{d}.html' class='archive-day'>{d}</a>" for d in days)
         month_sections.append(f'<section class="archive-month"><h2>{ym}</h2><div class="archive-days">{day_links}</div></section>')
     blocks = "".join(month_sections)
     body=f'''<section class="archive-page"><h1>鏂伴椈褰掓。</h1><p class="archive-count">鍏?{len(items_by_day)} 鏈熸棩鎶?/p>{blocks}</section>'''
@@ -113,10 +114,11 @@ def save_json(items, path):
 
 def build():
     repo_root=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    output_dir=repo_root  # 鐩存帴鍦ㄤ粨搴撴牴鐩綍杈撳嚭
+    output_dir=os.path.join(repo_root, "site")
     daily_dir=os.path.join(output_dir,"daily")
-    data_dir=os.path.join(repo_root,"data")
-    for d in [output_dir,daily_dir,data_dir]:
+    data_dir=os.path.join(repo_root,"content","daily")
+    briefs_dir=os.path.join(repo_root,"content","briefs")
+    for d in [output_dir,daily_dir,data_dir,briefs_dir]:
         os.makedirs(d,exist_ok=True)
 
     date_str=datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -128,6 +130,11 @@ def build():
 
     # 淇濆瓨 JSON 鏁版嵁
     save_json(items,os.path.join(data_dir,f"{date_str}.json"))
+    print(f"[OK] JSON 宸蹭繚瀛樺埌 content/daily/{date_str}.json")
+
+    # 鐢熸垚 Markdown 绠€鎶?
+    md_path=gen_markdown(items,date_str,briefs_dir)
+    print(f"[OK] Markdown 绠€鎶?{md_path}")
 
     # 鐢熸垚绱㈠紩椤甸潰
     idx=gen_index(items,date_str)
@@ -148,9 +155,11 @@ def build():
     with open(os.path.join(data_dir,"meta.json"),"w",encoding="utf-8") as f:
         json.dump(sorted(set(arch_data)),f,ensure_ascii=False)
 
-    # 鏃ユ姤椤?
+    # 鏃ユ姤鐙珛璇︽儏椤?
+    daily_page=gen_index(items,date_str,prefix="../")
     with open(os.path.join(daily_dir,f"{date_str}.html"),"w",encoding="utf-8") as f:
-        f.write(daily)
+        f.write(daily_page)
+    print(f"[OK] daily/{date_str}.html")
 
     # 褰掓。椤?
     arch=gen_archive(items_by_day)
@@ -166,6 +175,21 @@ def build():
     rss=gen_rss(items_by_day)
     with open(os.path.join(output_dir,"rss.xml"),"w",encoding="utf-8") as f:
         f.write(rss)
+    print(f"[OK] rss.xml")
+
+    # 澶嶅埗闈欐€佽祫婧?
+    for folder in ["css","js"]:
+        src_dir=os.path.join(repo_root,folder)
+        dst_dir=os.path.join(output_dir,folder)
+        if os.path.exists(src_dir):
+            if os.path.exists(dst_dir):
+                shutil.rmtree(dst_dir)
+            shutil.copytree(src_dir,dst_dir)
+    print(f"[OK] 闈欐€佽祫婧愬凡澶嶅埗")
+
+    # .nojekyll
+    with open(os.path.join(output_dir,".nojekyll"),"w") as f:
+        pass
 
     print(f"[DONE] 绔欑偣鏋勫缓瀹屾垚 - {date_str}")
 

@@ -40,19 +40,16 @@ jobs:
 
       - name: 抓取新闻并构建站点
         run: |
-          python -m src.build_site
+          python -m src
 
       - name: 提交新闻数据
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html archive.html about.html rss.xml daily/ data/ .nojekyll
+          git add content/
           if git diff --staged --quiet; then echo "无更新"; exit 0; fi
           git commit -m "daily: $(date +'%Y-%m-%d') 新闻日报更新"
           git push
-
-      - name: 添加 .nojekyll
-        run: touch .nojekyll
 
       - name: 配置 Pages
         uses: actions/configure-pages@v4
@@ -60,7 +57,7 @@ jobs:
       - name: 上传站点
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "."
+          path: "site"
 
       - name: 部署
         id: deployment
