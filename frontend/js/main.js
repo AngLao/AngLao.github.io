@@ -111,6 +111,23 @@
         h('section', { className: 'cat-section', 'data-category': catKey }, heading, grid)
       );
     });
+
+    // 搞笑无厘头（底部彩蛋）
+    if (data.funny && data.funny.length) {
+      var funnyGrid = h('div', { className: 'news-grid funny-grid' });
+      data.funny.forEach(function(item) {
+        funnyGrid.appendChild(newsCard(item, false));
+      });
+      container.appendChild(
+        h('section', { className: 'cat-section funny-section', 'data-category': 'Funny' },
+          h('h2', { className: 'cat-heading funny-heading', style: '--cat-color:#f59e0b' },
+            '😂 搞笑无厘头',
+            h('span', { className: 'count' }, data.funny.length + '')
+          ),
+          funnyGrid
+        )
+      );
+    }
   }
 
   // ── render archive ───────────────────────────────────

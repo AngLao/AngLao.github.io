@@ -1,104 +1,124 @@
 ﻿# 全球新闻日报
 
-每日自动聚合自全球 **50+ 家主流媒体** 的头条新闻，生成结构化的 **Markdown 简报** 和 **HTML 静态网站**，通过 GitHub Pages 发布。
+每日自动聚合来自 **50 个高质量 RSS 源** 的中文新闻头条，生成静态网站并通过 GitHub Pages 发布。
 
-## 架构概览
+## 架构
 
 ```
-                    ┌──────────────┐
-                    │  50+ RSS源   │
-                    │ (全球媒体)   │
-                    └──────┬───────┘
-                           │ feedparser + aiohttp
-                    ┌──────▼───────┐
-                    │  news_fetcher │  抓取 → 去重 → 分类
-                    └──────┬───────┘
-                           │
-              ┌────────────┼────────────┐
-              ▼            ▼            ▼
-      ┌───────────┐ ┌──────────┐ ┌──────────┐
-      │ Markdown  │ │  HTML    │ │  JSON    │
-      │ 简报      │ │ 静态站   │ │ 结构化   │
-      └───────────┘ └────┬─────┘ └──────────┘
-                         │ GitHub Pages
-                    ┌────▼─────┐
-                    │ 网站访问  │
-                    └──────────┘
+50 RSS 源 (中文为主)
+       │
+       ▼  aiohttp 异步并发抓取
+┌──────────────┐
+│  fetcher.py  │  抓取 → 去重 → 重要性评分 → 分类
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│  build.py    │  编排：归档数据 → 生成 JSON → 输出站点
+└──────┬───────┘
+       │
+  ┌────┴────┐
+  ▼         ▼
+content/   site/
+ data/      ├── index.html  ← 从 frontend/ 复制
+ (Git持久化) ├── archive.html
+            ├── about.html
+            ├── css/ js/   ← 前端资源
+            ├── data/
+            │   ├── news.json      今日新闻
+            │   ├── archive.json   归档日期列表
+            │   └── daily/         每日详情 JSON
+            ├── daily/             每日详情 HTML
+            └── rss.xml
 ```
-
-## 已收录的媒体源 (50家)
-
-涵盖 **Global (路透/AP/BBC/CNN/半岛/法广/德声/欧洲台)** · **北美 (NYT/WP/WSJ/Bloomberg/NPR/LA Times/USA Today/ABC/CBS/Guardian US/Economist/Time/Forbes)** · **欧洲 (Guardian UK/Telegraph/Independent/FT/Le Monde/El Pais/Spiegel/Irish Times/The Times)** · **亚太 (SCMP/Straits Times/Japan Times/Nikkei/The Hindu/Times of India/Korea Herald/Asahi)** · **中国 (新华社/央视/环球网/澎湃/观察者/新浪/腾讯/参考消息)** · **大洋洲 (SMH)**
 
 ## 快速开始
 
-### 1. 创建 GitHub 仓库
-
-访问 https://github.com/new 新建一个仓库，例如 `daily-news`，然后：
+### 1. 创建仓库
 
 ```bash
-# 克隆到本地
-git clone https://github.com/你的用户名/daily-news.git
-cd daily-news
-
-# 复制本项目所有文件到这个目录
-# 然后推送
+git clone https://github.com/你的用户名/你的仓库.git
+cd 你的仓库
+# 复制本项目全部文件后推送
 git add .
-git commit -m "init: 全球新闻日报项目"
+git commit -m "init: 全球新闻日报"
 git push
 ```
 
 ### 2. 启用 GitHub Pages
 
-1. 在仓库 Settings → Pages 中：
-   - Source: **GitHub Actions**
-2. 本项目自带 Actions workflow，首次运行后会自动部署
+仓库 Settings → Pages → Source: **GitHub Actions**
 
-### 3. 首次手动触发
+### 3. 手动触发
 
-在仓库 Actions 页面找到 **每日新闻聚合与部署**，点击 `Run workflow` 手动触发一次
+Actions → 每日新闻聚合与部署 → Run workflow
 
-### 4. 访问网站
+### 4. 访问
 
-部署完成后访问：`https://你的用户名.github.io/daily-news/`
-
-### 5. 查看 Markdown 简报
-
-每次运行后，Markdown 文件会保存在 `content/briefs/` 目录下
+`https://你的用户名.github.io/`
 
 ## 项目结构
 
 ```
-├── .github/workflows/
-│   └── daily-news.yml      # GitHub Actions 自动化
 ├── src/
-│   ├── news_sources.py      # 50家媒体源定义 + 分类系统
-│   ├── news_fetcher.py      # RSS 抓取引擎
-│   ├── markdown_brief.py    # Markdown 简报生成
-│   └── build_site.py        # HTML 站点构建器
-├── site/                    # 生成的静态网站
-│   ├── index.html           # 首页
-│   ├── archive.html         # 归档页
-│   ├── about.html           # 关于页
-│   ├── rss.xml              # RSS feed
-│   ├── css/style.css        # 样式
-│   ├── js/main.js           # 交互脚本
-│   └── daily/               # 每日详情页
-├── content/                 # 数据
-│   ├── briefs/              # Markdown 简报
-│   └── daily/               # JSON 结构化数据
-└── requirements.txt         # Python 依赖
+│   ├── sources.py       # 50 个 RSS 源定义 + 分类关键词
+│   ├── fetcher.py       # 异步抓取引擎 (aiohttp + feedparser)
+│   ├── funny.py         # 搞笑无厘头新闻生成器
+│   └── build.py         # 构建脚本 (归档 + 生成 JSON + 输出站点)
+├── frontend/            # 前端 (前后端分离)
+│   ├── index.html       # 首页 (JS 数据驱动渲染)
+│   ├── archive.html     # 归档页
+│   ├── about.html       # 关于页
+│   ├── css/style.css    # 现代扁平化设计 + 暗色模式
+│   └── js/main.js       # Vanilla JS 渲染引擎
+├── content/data/        # 新闻归档 (Git 持久化)
+├── .github/workflows/   # CI 自动化
+└── requirements.txt
 ```
 
-## 自定义
+## 新闻源 (50家)
 
-- **修改新闻源**: 编辑 `src/news_sources.py` 中的 `NEWS_SOURCES` 列表
-- **调整分类**: 编辑 `CATEGORY_KEYWORDS` 和 `CATEGORY_ORDER`
-- **修改更新频率**: 编辑 `.github/workflows/daily-news.yml` 中的 cron 表达式
+| 类别 | 数量 | 代表 |
+|------|------|------|
+| 央媒/官方 | 6 | 新华社、央视、人民日报、参考消息 |
+| 商业门户 | 5 | 新浪、腾讯、网易、搜狐、凤凰 |
+| 严肃媒体 | 6 | 澎湃、财新、界面、新京报、南方周末 |
+| 财经 | 5 | 第一财经、华尔街见闻、36氪、虎嗅 |
+| 科技 | 5 | IT之家、品玩、量子位、机器之心 |
+| 中文国际 | 8 | BBC中文、NYT中文、FT中文、DW中文、日经中文 |
+| 垂直领域 | 6 | 环球科学、果壳、虎扑、豆瓣、好奇心日报 |
+| 全球英文 | 6 | Reuters、AP、Al Jazeera、Guardian、Bloomberg |
+| 地方媒体 | 3 | 上观新闻、南方都市报、北京日报 |
+
+## 分类体系
+
+| 分类 | 优先级 | 颜色 |
+|------|--------|------|
+| 时政 | ★★★★★ | 🔴 |
+| 财经 | ★★★★★ | 🟢 |
+| 国际 | ★★★★★ | 🔵 |
+| 科技 | ★★★★ | 🔵 |
+| 科学 | ★★★★ | 🟣 |
+| 军事 | ★★★★ | 🟤 |
+| 体育 | ★★★ | 🟠 |
+| 文化 | ★★★ | 🩷 |
+| 😂 搞笑无厘头 | — | 🟡 底部彩蛋 |
+
+### 重要性过滤
+
+每条新闻通过关键词匹配评分（至少命中 2 个关键词才入选），同时结合来源权威度加权，确保只展示真正重要的新闻。
+
+## 自动化
+
+- **时间**: 每天北京时间 12:00 (UTC 04:00)
+- **流程**: 抓取 → 归档提交 → 构建 → 部署
+- **归档**: 每日新闻数据自动提交到 `content/data/`，永久保存
 
 ## 技术栈
 
-- Python: feedparser, aiohttp, BeautifulSoup4
-- GitHub Actions: 每日定时运行
-- GitHub Pages: 静态托管
-- 前端: 纯 HTML + CSS + JS，零依赖
+| 层 | 技术 |
+|----|------|
+| 后端 | Python · aiohttp · feedparser · BeautifulSoup4 |
+| 前端 | 纯 HTML + CSS + JS · 零框架 |
+| CI/CD | GitHub Actions · GitHub Pages |
+| 设计 | CSS 变量 · 暗色模式 · 响应式 |

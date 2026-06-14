@@ -229,6 +229,24 @@ img { max-width: 100%; display: block; }
   gap: 12px;
 }
 
+/* ── Funny Section ─────────────────────────────────────── */
+.funny-section {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 3px dashed #f59e0b;
+  opacity: .92;
+}
+.funny-heading {
+  border-bottom-style: dashed !important;
+  font-size: .95rem;
+}
+.funny-section .news-card {
+  background: #fffbeb;
+  border-color: #fcd34d;
+}
+.funny-section .news-card:hover { background: #fef3c7; }
+.funny-section .news-title { font-size: .88rem; }
+
 /* ── About Page ────────────────────────────────────────── */
 .about-page { max-width: 720px; margin: 0 auto; padding: 24px 0; }
 .about-page h1 {
@@ -342,4 +360,6 @@ img { max-width: 100%; display: block; }
   .main-nav a:hover,
   .main-nav a.active { background: rgba(96,165,250,.12); }
   .news-card:hover { background: #1a2740; }
+  .funny-section .news-card { background: #292112; border-color: #92400e; }
+  .funny-section .news-card:hover { background: #352b15; }
 }

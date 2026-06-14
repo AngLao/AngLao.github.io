@@ -6,7 +6,7 @@ import asyncio, hashlib, re
 from datetime import datetime, timezone
 import aiohttp, feedparser
 from bs4 import BeautifulSoup
-from .sources import NEWS_SOURCES, CATEGORY_KEYWORDS, CATEGORY_ORDER
+from .sources import NEWS_SOURCES, CATEGORY_KEYWORDS, CATEGORY_ORDER, IMPORTANCE_MIN_KEYWORD_SCORE
 
 
 class NewsItem:
@@ -42,7 +42,8 @@ def _norm_title(title):
 
 
 def _classify(item):
-    """Keyword-based classification. Returns top 2 categories or ['World']."""
+    """Keyword-based classification + importance score.
+    Returns (categories, importance_score)."""
     text = (item.title + " " + item.summary).lower()
     scores = {}
     for cat, kws in CATEGORY_KEYWORDS.items():
@@ -50,9 +51,18 @@ def _classify(item):
         if score > 0:
             scores[cat] = score
     if not scores:
-        return ["World"]
+        return ["World"], 0
     ranked = sorted(scores, key=scores.get, reverse=True)
-    return ranked[:2]
+    total_score = sum(scores.values())
+    return ranked[:2], total_score
+
+
+def _source_weight(source_name):
+    """Get source weight for importance boost."""
+    for s in NEWS_SOURCES:
+        if s["name"] == source_name:
+            return s.get("weight", 5)
+    return 5
 
 
 async def _fetch_one(source, session, timeout=15):
@@ -108,9 +118,19 @@ async def fetch_all(max_concurrent=15):
         seen[key] = True
         deduped.append(item)
 
-    # Classify
+    # Classify + importance score
     for item in deduped:
-        item.categories = _classify(item)
+        item.categories, item._score = _classify(item)
+        item._src_weight = _source_weight(item.source_name)
+
+    # Filter: keep only important news (keyword score >= threshold)
+    important = [i for i in deduped if i._score >= IMPORTANCE_MIN_KEYWORD_SCORE]
+    if len(important) < 10:
+        # Fallback: include lower-scored items sorted by combined score
+        deduped.sort(key=lambda x: x._score + x._src_weight, reverse=True)
+        important = deduped[:50]
+    else:
+        deduped = important
 
     # Sort by published time descending
     deduped.sort(key=lambda x: x.published, reverse=True)

@@ -6,6 +6,7 @@ import os, json, shutil
 from datetime import datetime, timezone
 from .fetcher import run as fetch_news
 from .sources import CATEGORIES, CATEGORY_ORDER
+from .funny import pick_funny
 
 CAT_ORDER = CATEGORY_ORDER
 
@@ -108,6 +109,14 @@ def build():
         if cat in grouped:
             grouped[cat].append(item)
 
+    # 搞笑无厘头新闻（底部彩蛋）
+    funny_items = []
+    for f in pick_funny(5, date_str):
+        funny_items.append({
+            "title": f["title"], "summary": f.get("summary",""),
+            "url": "#funny", "source": f["source"], "cat": "Funny", "date": date_str,
+        })
+
     news_json = {
         "date": date_str,
         "stats": {
@@ -116,6 +125,7 @@ def build():
         },
         "items": today_items,
         "categories": {k: v for k, v in grouped.items() if v},
+        "funny": funny_items,
     }
     with open(os.path.join(data_dir, "news.json"), "w", encoding="utf-8") as f:
         json.dump(news_json, f, ensure_ascii=False, indent=2)
