@@ -32,6 +32,7 @@ def _dicts_to_items(raw_list):
             "source": d["source_name"],
             "cat": d["categories"][0] if d.get("categories") else "World",
             "date": d.get("published", "")[:10],
+            "img": d.get("img_url", ""),
         })
     return items
 

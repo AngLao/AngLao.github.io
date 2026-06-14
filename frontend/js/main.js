@@ -63,25 +63,36 @@
 
     const badge = h('span', { className: 'cat-badge', style: `--cat-color:${cat.color}` }, cat.label);
     const source = h('span', { className: 'source' }, '\u260e ' + item.source);
-    const time = h('span', { className: 'time' },
-      '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> '
-      + timeStr
-    );
+    const time = h('span', { className: 'time' }, timeStr);
 
     const meta = h('div', { className: 'news-meta' }, badge, source, time);
     const title = h('h3', { className: 'news-title' },
       h('a', { href: item.url, target: '_blank', rel: 'noopener' }, item.title)
     );
 
-    const body = h('div', { className: 'news-body' }, title, meta);
+    var body = h('div', { className: 'news-body' }, title, meta);
 
     if (large && item.summary) {
-      const s = item.summary.length > 200 ? item.summary.slice(0, 200) + '...' : item.summary;
+      var s = item.summary.length > 200 ? item.summary.slice(0, 200) + '...' : item.summary;
       body.appendChild(h('p', { className: 'news-summary' }, s));
     }
 
-    const cls = large ? 'news-card large' : 'news-card';
-    return h('article', { className: cls }, body);
+    var cls = large ? 'news-card large' : 'news-card';
+
+    // thumbnail
+    if (item.img) {
+      var wrap = h('div', { className: large ? 'card-large-wrap' : 'card-wrap' });
+      var img = h('div', { className: 'card-thumb' },
+        '<img src="' + item.img + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">'
+      );
+      wrap.appendChild(img);
+      wrap.appendChild(body);
+      var article = h('article', { className: cls }, wrap);
+    } else {
+      var article = h('article', { className: cls }, body);
+    }
+
+    return article;
   }
 
   // ── render index ─────────────────────────────────────

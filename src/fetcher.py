@@ -1,6 +1,6 @@
 """
 全球新闻 RSS 抓取引擎
-异步并发抓取 → 去重 → 分类 → 排序
+异步并发抓取 → 去重 → 翻译中文 → 分类 → 排序
 """
 import asyncio, hashlib, re
 from datetime import datetime, timezone
@@ -26,7 +26,44 @@ class NewsItem:
         self.language = language
 
 
-def _clean_html(raw):
+def _extract_image(entry):
+    """Extract image URL from RSS entry."""
+    # media_content
+    for mc in entry.get("media_content", []):
+        url = mc.get("url", "")
+        if url and any(url.lower().endswith(ext) for ext in (".jpg",".jpeg",".png",".webp",".gif")):
+            return url
+    # links with image type
+    for link in entry.get("links", []):
+        if link.get("type","").startswith("image/"):
+            return link.get("href","")
+    # enclosures
+    for enc in entry.get("enclosures", []):
+        url = enc.get("href","")
+        if url:
+            return url
+    # media_thumbnail
+    mt = entry.get("media_thumbnail")
+    if mt and isinstance(mt, list) and mt:
+        return mt[0].get("url","")
+    return ""
+
+
+def _has_chinese(text):
+    """Check if text contains Chinese characters."""
+    return bool(re.search(r'[\u4e00-\u9fff]', text))
+
+
+def _translate_text(text, target="zh-CN"):
+    """Translate text to Chinese using deep-translator (Google)."""
+    if not text or _has_chinese(text):
+        return text
+    try:
+        from deep_translator import GoogleTranslator
+        result = GoogleTranslator(source="auto", target="zh-CN").translate(text[:1500])
+        return result if result else text
+    except Exception:
+        return text
     """Strip HTML tags, keep plain text, max 300 chars."""
     if not raw:
         return ""
@@ -90,7 +127,8 @@ async def _fetch_one(source, session, timeout=15):
         items.append(NewsItem(
             title=title, summary=summary, url=link,
             source_name=source["name"], source_url=source["url"],
-            published=published, language=source.get("lang", "en")
+            published=published, language=source.get("lang", "en"),
+            img_url=_extract_image(entry),
         ))
     return items
 
@@ -117,6 +155,15 @@ async def fetch_all(max_concurrent=15):
             continue
         seen[key] = True
         deduped.append(item)
+
+    # Translate non-Chinese titles/summaries to Chinese
+    print(f"[*] 翻译中... ({len(deduped)} 条)")
+    for item in deduped:
+        if not _has_chinese(item.title):
+            item.title = _translate_text(item.title)
+        if item.summary and not _has_chinese(item.summary):
+            item.summary = _translate_text(item.summary)
+    print(f"[+] 翻译完成")
 
     # Classify + importance score
     for item in deduped:
