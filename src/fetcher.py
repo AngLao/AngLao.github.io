@@ -11,7 +11,7 @@ from .sources import NEWS_SOURCES, CATEGORY_KEYWORDS, CATEGORY_ORDER, IMPORTANCE
 
 class NewsItem:
     __slots__ = ("id","title","summary","url","source_name","source_url",
-                 "published","categories","img_url","language")
+                 "published","categories","img_url","language","_score","_src_weight")
     def __init__(self, title, summary, url, source_name, source_url,
                  published=None, categories=None, img_url="", language="en"):
         self.id = hashlib.md5(url.encode()).hexdigest()[:12]
@@ -126,9 +126,9 @@ async def fetch_all(max_concurrent=15):
     # Filter: keep only important news (keyword score >= threshold)
     important = [i for i in deduped if i._score >= IMPORTANCE_MIN_KEYWORD_SCORE]
     if len(important) < 10:
-        # Fallback: include lower-scored items sorted by combined score
+        # Fallback: 不足10条时取综合评分前50
         deduped.sort(key=lambda x: x._score + x._src_weight, reverse=True)
-        important = deduped[:50]
+        deduped = deduped[:50]
     else:
         deduped = important
 
