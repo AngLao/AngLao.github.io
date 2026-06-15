@@ -1,44 +1,163 @@
 [
   {
-    "id": "demo0",
-    "title": "全球新闻日报 — 来自 新华社 的头条",
-    "summary": "本期为示例数据。实际运行时将从50+ RSS源抓取实时新闻。",
-    "url": "https://www.xinhuanet.com",
-    "source_name": "新华社",
-    "source_url": "https://www.xinhuanet.com",
-    "published": "2026-06-15T00:00:00Z",
+    "id": "6a7dcee3de15",
+    "title": "随着利率和通胀的影响，日本的“冻结资金”池转向投资",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/markets/trading-asia/japan-s-frozen-money-pool-shifts-to-investments-as-rates-inflation-bite",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-06-15T21:56:27.718879+00:00",
     "categories": [
+      "Economy",
       "World"
     ],
     "img_url": "",
-    "language": "zh"
+    "language": "en"
   },
   {
-    "id": "demo1",
-    "title": "全球新闻日报 — 来自 央视新闻 的头条",
-    "summary": "本期为示例数据。实际运行时将从50+ RSS源抓取实时新闻。",
-    "url": "https://news.cctv.com",
-    "source_name": "央视新闻",
-    "source_url": "https://news.cctv.com",
-    "published": "2026-06-15T00:00:00Z",
+    "id": "2181a7a146b9",
+    "title": "德勤顾问表示，数据和人工智能驱动的分析是采矿业的“新石油”",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/markets/commodities/data-and-ai-driven-analysis-the-new-oil-in-mining-deloitte-adviser-says",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-06-15T21:56:27.718866+00:00",
     "categories": [
-      "World"
+      "Technology"
     ],
     "img_url": "",
-    "language": "zh"
+    "language": "en"
   },
   {
-    "id": "demo2",
-    "title": "全球新闻日报 — 来自 人民日报 的头条",
-    "summary": "本期为示例数据。实际运行时将从50+ RSS源抓取实时新闻。",
-    "url": "https://www.people.com.cn",
-    "source_name": "人民日报",
-    "source_url": "https://www.people.com.cn",
-    "published": "2026-06-15T00:00:00Z",
+    "id": "17cffcbfb592",
+    "title": "美国攻击无人机制造商利用台湾控制器需求",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/aerospace-defense-industries/us-attack-drone-maker-taps-into-taiwan-controller-demand",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-06-15T21:56:27.718831+00:00",
+    "categories": [
+      "Politics",
+      "Military"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "e24f85f3294d",
+    "title": "巴基斯坦零工出口创历史新高但人工智能威胁迫在眉睫",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/business-trends/pakistani-gig-workers-exports-to-hit-record-high-but-ai-threats-loom",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-06-15T21:56:27.718761+00:00",
+    "categories": [
+      "Economy",
+      "Technology"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "dcbff886c343",
+    "title": "韩国海军交易标志着希腊地缘战略重要性的上升",
+    "summary": "",
+    "url": "https://asia.nikkei.com/politics/defense/south-korean-naval-deals-flag-greece-s-rising-geostrategic-importance",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-06-15T21:56:27.718749+00:00",
+    "categories": [
+      "World",
+      "Military"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "ea5f806a233b",
+    "title": "日本 Terra Drone 收购两家乌克兰无人机制造商 进军全球市场",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/business-deals/japan-s-terra-drone-buys-2-ukrainian-drone-makers-in-global-push",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-06-15T21:56:27.718688+00:00",
+    "categories": [
+      "World",
+      "Military"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "b20a929024be",
+    "title": "JX Advanced Metals将提高人工智能数据中心的光学芯片晶圆产能",
+    "summary": "",
+    "url": "https://asia.nikkei.com/spotlight/supply-chain/jx-advanced-metals-to-raise-optical-chip-wafer-capacity-for-ai-data-centers",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-06-15T21:56:27.718675+00:00",
+    "categories": [
+      "Technology",
+      "Economy"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "c1fbbbacabd6",
+    "title": "日本卫材公司（Eisai）将向英国工厂注资 6400 万美元，用于包装注射药物",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/companies/japan-s-eisai-to-pump-64m-into-uk-plant-to-package-injectable-drugs",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-06-15T21:56:27.718587+00:00",
+    "categories": [
+      "World",
+      "Technology"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "72fa20e87aaa",
+    "title": "富士康与施耐德电气合作开发人工智能数据中心设备",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/technology/foxconn-schneider-electric-team-up-in-ai-data-center-equipment",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-06-15T21:56:27.718573+00:00",
+    "categories": [
+      "Technology"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "502afacb1ba2",
+    "title": "随着调味品制造商纷纷涌入，日本龟甲万计划在印度开设第一家工厂",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/food-beverage/japan-s-kikkoman-plans-first-india-plant-as-condiment-makers-rush-in",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-06-15T21:56:27.718557+00:00",
     "categories": [
       "World"
     ],
     "img_url": "",
-    "language": "zh"
+    "language": "en"
+  },
+  {
+    "id": "a9631d9df793",
+    "title": "韩国、印度尼西亚控制衍生品交易以捍卫货币",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/markets/currencies/south-korea-indonesia-rein-in-derivatives-trading-to-defend-currencies",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-06-15T21:56:27.718516+00:00",
+    "categories": [
+      "World"
+    ],
+    "img_url": "",
+    "language": "en"
   }
 ]
