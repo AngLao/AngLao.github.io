@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/reader/static/css/main.abdf6894.css",
+    "main.js": "/reader/static/js/main.ac70420e.js",
+    "static/media/icomoon.svg?abnyq9": "/reader/static/media/icomoon.cacd24235174b264b7fe.svg",
+    "static/media/icomoon.eot?abnyq9": "/reader/static/media/icomoon.a5641208a3b4501c55a7.eot",
+    "static/media/icomoon.woff?abnyq9": "/reader/static/media/icomoon.d8c80cf32120d4e3e499.woff",
+    "static/media/icomoon.ttf?abnyq9": "/reader/static/media/icomoon.35954cb5a901f99f20bc.ttf",
+    "static/media/empty-light.svg": "/reader/static/media/empty-light.2fac2faa9552059f5f37db068aad4bc4.svg",
+    "static/media/empty-dark.svg": "/reader/static/media/empty-dark.1c711da468562f8867d0cc3e0b1d7a3b.svg",
+    "static/media/logo-light.png": "/reader/static/media/logo-light.1e0408656c66c264fc2a.png",
+    "static/media/logo-dark.png": "/reader/static/media/logo-dark.b372d31d791e0f536824.png",
+    "static/media/logo-dark-pro.png": "/reader/static/media/logo-dark-pro.a8822ed920f1396edeab.png",
+    "static/media/logo-light-pro.png": "/reader/static/media/logo-light-pro.feeaab5dcb3fe490dfb1.png",
+    "index.html": "/reader/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.abdf6894.css",
+    "static/js/main.ac70420e.js"
+  ]
+}
