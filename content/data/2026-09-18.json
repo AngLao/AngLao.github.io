@@ -1,0 +1,424 @@
+[
+  {
+    "id": "9a6ad1897b15",
+    "title": "Singapore exports surge 46% in August, strongest in 38 years",
+    "summary": "",
+    "url": "https://asia.nikkei.com/economy/singapore-exports-surge-46-in-august-strongest-in-38-years",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.345265+00:00",
+    "categories": [
+      "World"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "2bd93a212375",
+    "title": "Tokyo Game Show sees sharp drop in China exhibitors as ties worsen",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/media-entertainment/tokyo-game-show-sees-sharp-drop-in-china-exhibitors-as-ties-worsen",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.345253+00:00",
+    "categories": [
+      "World"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "433b70abf0c9",
+    "title": "Vietnam bus maker Kim Long enters Thailand, eyes ASEAN exports",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/automobiles/vietnam-bus-maker-kim-long-enters-thailand-eyes-asean-exports",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.345240+00:00",
+    "categories": [
+      "Technology"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "4df62474c4b1",
+    "title": "Yen weakens to 156-level as Fed fulfills rate hike expectations",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/markets/currencies/yen-weakens-to-156-level-as-fed-fulfills-rate-hike-expectations",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.345228+00:00",
+    "categories": [
+      "Economy"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "0c4fe7b6dc84",
+    "title": "Japan, US in talks to build chip factory as part of tariff deal",
+    "summary": "",
+    "url": "https://asia.nikkei.com/economy/trade-war/trump-tariffs/japan-us-in-talks-to-build-chip-factory-as-part-of-tariff-deal2",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.345216+00:00",
+    "categories": [
+      "Economy"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "6ce4badcd148",
+    "title": "Applied Materials to invest $5bn in India as country ups chip support",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/tech/semiconductors/applied-materials-to-invest-5bn-in-india-as-country-ups-chip-support",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.345204+00:00",
+    "categories": [
+      "World"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "9d1c9f46562c",
+    "title": "Huawei debuts 11 AI-related chips in challenge to Nvidia, Intel, AMD",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/tech/semiconductors/huawei-debuts-11-ai-related-chips-in-challenge-to-nvidia-intel-amd",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.345191+00:00",
+    "categories": [
+      "Technology",
+      "Economy"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "c0d51975525e",
+    "title": "Japan's Takaichi emphasizes continuity in first cabinet reshuffle",
+    "summary": "",
+    "url": "https://asia.nikkei.com/politics/japan-s-takaichi-emphasizes-continuity-in-first-cabinet-reshuffle",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.345179+00:00",
+    "categories": [
+      "Technology"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "48a66015623d",
+    "title": "Malaysia's AirAsia shares tumble 21% as funding fears mount",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/transportation/malaysia-s-airasia-shares-tumble-21-as-funding-fears-mount",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.345167+00:00",
+    "categories": [
+      "Technology"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "f357d1dbec9e",
+    "title": "Android phones win 54% market share in Japan after iPhone prices rise",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/electronics/android-phones-win-54-market-share-in-japan-after-iphone-prices-rise",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.345155+00:00",
+    "categories": [
+      "Economy",
+      "Technology"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "67a2e3b5518b",
+    "title": "Japan households' stock investments overtake insurance, pensions for first time",
+    "summary": "",
+    "url": "https://asia.nikkei.com/economy/japan-households-stock-investments-overtake-insurance-pensions-for-first-time",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.345143+00:00",
+    "categories": [
+      "Economy"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "724d8636b1b5",
+    "title": "IKEA rival Nitori to focus on kitchenware over furniture in new China stores",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/retail/ikea-rival-nitori-to-focus-on-kitchenware-over-furniture-in-new-china-stores",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.345130+00:00",
+    "categories": [
+      "Politics"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "29184725346b",
+    "title": "Taiwan dollar, South Korea won strong among Asia currencies as AI booms",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/markets/currencies/taiwan-dollar-south-korea-won-strong-among-asia-currencies-as-ai-booms",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.345118+00:00",
+    "categories": [
+      "Technology"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "b0998233645b",
+    "title": "Toyota to deploy 400,000 robots to work alongside factory staff",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/technology/toyota-to-deploy-400-000-robots-to-work-alongside-factory-staff",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.345105+00:00",
+    "categories": [
+      "World"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "b9fb763498f4",
+    "title": "With a new cabinet, Takaichi's base is secure. What comes next?",
+    "summary": "",
+    "url": "https://asia.nikkei.com/spotlight/comment/with-a-new-cabinet-takaichi-s-base-is-secure.-what-comes-next",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.345092+00:00",
+    "categories": [
+      "Technology"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "1fdefac4fd71",
+    "title": "J-pop artists lose out as overseas royalties slip through cracks",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/media-entertainment/j-pop-artists-lose-out-as-overseas-royalties-slip-through-cracks",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.345079+00:00",
+    "categories": [
+      "World"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "d565089b3459",
+    "title": "Petronas, Woodside tout alternatives to Mideast LNG for Asian buyers",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/energy/petronas-woodside-tout-alternatives-to-mideast-lng-for-asian-buyers",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.345067+00:00",
+    "categories": [
+      "World"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "b26120ea52a5",
+    "title": "Honda to move up production of next-gen hybrids in EV strategy overhaul",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/automobiles/honda-to-move-up-production-of-next-gen-hybrids-in-ev-strategy-overhaul",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.345054+00:00",
+    "categories": [
+      "World"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "1a9e80ff62c5",
+    "title": "Indonesia quake aftermath exposes fault lines in Prabowo's economic plans",
+    "summary": "",
+    "url": "https://asia.nikkei.com/spotlight/policy-asia/indonesia-quake-aftermath-exposes-fault-lines-in-prabowo-s-economic-plans",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.345040+00:00",
+    "categories": [
+      "World"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "3cb326256c83",
+    "title": "Kodak surges to Japan's top camera brand after striking a chord with Gen Z",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/electronics/kodak-surges-to-japan-s-top-camera-brand-after-striking-a-chord-with-gen-z",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.345027+00:00",
+    "categories": [
+      "World"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "fd2fc9bcb2aa",
+    "title": "Thailand must invest in front-end chip production, industry body says",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/tech/semiconductors/thailand-must-invest-in-front-end-chip-production-industry-body-says",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.345012+00:00",
+    "categories": [
+      "Technology"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "2872f6504ea2",
+    "title": "Panasonic Energy gets in on AI demand boom",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/tech/semiconductors/panasonic-energy-gets-in-on-ai-demand-boom",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.344998+00:00",
+    "categories": [
+      "Technology"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "f37bcfac0ab9",
+    "title": "Baidu-backed DeepWay aims to license its e-truck tech in Europe",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/automobiles/electric-vehicles/baidu-backed-deepway-aims-to-license-its-e-truck-tech-in-europe",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.344983+00:00",
+    "categories": [
+      "Technology"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "9825c7c22679",
+    "title": "China rebuffs AI slowdown calls ahead of Trump-Xi summit: 5 things to know",
+    "summary": "",
+    "url": "https://asia.nikkei.com/politics/international-relations/us-china-tensions/china-rebuffs-ai-slowdown-calls-ahead-of-trump-xi-summit-5-things-to-know",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.344966+00:00",
+    "categories": [
+      "Technology"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "0f7318b636c2",
+    "title": "US chip toolmaker Forge Nano bets on Taiwan for production: CEO",
+    "summary": "",
+    "url": "https://asia.nikkei.com/editor-s-picks/interview/us-chip-toolmaker-forge-nano-bets-on-taiwan-for-production-ceo",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.344952+00:00",
+    "categories": [
+      "Technology"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "8ff7020894e0",
+    "title": "Yen falls to 157 per dollar; aggressive BOJ tightening hopes dashed",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/markets/currencies/yen-falls-to-157-per-dollar-aggressive-boj-tightening-hopes-dashed",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.344938+00:00",
+    "categories": [
+      "World"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "8dee78250eb9",
+    "title": "South Korea's Lee rules out any combat deployment to Middle East",
+    "summary": "",
+    "url": "https://asia.nikkei.com/politics/south-korea-s-lee-rules-out-any-combat-deployment-to-middle-east",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.344922+00:00",
+    "categories": [
+      "World"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "e25847f13355",
+    "title": "Editor's Choice: 'Global Hawk missing.' On the alert in Nikkei Asia's newsroom",
+    "summary": "",
+    "url": "https://asia.nikkei.com/editor-s-picks/editor-in-chief-s-picks/editor-s-choice-global-hawk-missing.-on-the-alert-in-nikkei-asia-s-newsroom",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.344905+00:00",
+    "categories": [
+      "World"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "043a29d10ccb",
+    "title": "BOJ hikes rates to 1.25% as chief Ueda cites shift in policy phase",
+    "summary": "",
+    "url": "https://asia.nikkei.com/economy/bank-of-japan/boj-hikes-rates-to-1.25-as-chief-ueda-cites-shift-in-policy-phase",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.344888+00:00",
+    "categories": [
+      "World"
+    ],
+    "img_url": "",
+    "language": "en"
+  },
+  {
+    "id": "3a64c0241fb0",
+    "title": "AirAsia expects $1bn financing by January amid fuel cost pressure",
+    "summary": "",
+    "url": "https://asia.nikkei.com/business/transportation/airasia-expects-1bn-financing-by-january-amid-fuel-cost-pressure",
+    "source_name": "Nikkei Asia",
+    "source_url": "https://asia.nikkei.com",
+    "published": "2026-09-18T08:55:27.344862+00:00",
+    "categories": [
+      "Technology"
+    ],
+    "img_url": "",
+    "language": "en"
+  }
+]
