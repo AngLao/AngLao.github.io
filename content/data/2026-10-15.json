@@ -1,0 +1,44 @@
+[
+  {
+    "id": "demo0",
+    "title": "全球新闻日报 — 来自 新华社 的头条",
+    "summary": "本期为示例数据。实际运行时将从50+ RSS源抓取实时新闻。",
+    "url": "https://www.xinhuanet.com",
+    "source_name": "新华社",
+    "source_url": "https://www.xinhuanet.com",
+    "published": "2026-10-15T00:00:00Z",
+    "categories": [
+      "World"
+    ],
+    "img_url": "",
+    "language": "zh"
+  },
+  {
+    "id": "demo1",
+    "title": "全球新闻日报 — 来自 央视新闻 的头条",
+    "summary": "本期为示例数据。实际运行时将从50+ RSS源抓取实时新闻。",
+    "url": "https://news.cctv.com",
+    "source_name": "央视新闻",
+    "source_url": "https://news.cctv.com",
+    "published": "2026-10-15T00:00:00Z",
+    "categories": [
+      "World"
+    ],
+    "img_url": "",
+    "language": "zh"
+  },
+  {
+    "id": "demo2",
+    "title": "全球新闻日报 — 来自 人民日报 的头条",
+    "summary": "本期为示例数据。实际运行时将从50+ RSS源抓取实时新闻。",
+    "url": "https://www.people.com.cn",
+    "source_name": "人民日报",
+    "source_url": "https://www.people.com.cn",
+    "published": "2026-10-15T00:00:00Z",
+    "categories": [
+      "World"
+    ],
+    "img_url": "",
+    "language": "zh"
+  }
+]
